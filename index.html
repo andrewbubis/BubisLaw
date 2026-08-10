@@ -105,7 +105,26 @@ html { scroll-behavior: smooth; }
 <body>
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <nav class="nav" style="max-width: 1200px; width: 100%; margin: 0 auto; box-sizing: border-box; padding: 24px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;">
-    <div></div>
+    <div>
+      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Scales of Justice" style="opacity: 0.55;">
+        <!-- center post -->
+        <rect x="18.5" y="6" width="1" height="26" fill="#5980a6"/>
+        <!-- base -->
+        <rect x="12" y="32" width="14" height="1.5" rx="0.75" fill="#5980a6"/>
+        <!-- crossbeam -->
+        <rect x="8" y="10" width="22" height="1" rx="0.5" fill="#5980a6"/>
+        <!-- left chain -->
+        <line x1="9" y1="11" x2="9" y2="17" stroke="#5980a6" stroke-width="0.9"/>
+        <!-- right chain -->
+        <line x1="29" y1="11" x2="29" y2="17" stroke="#5980a6" stroke-width="0.9"/>
+        <!-- left pan -->
+        <path d="M5 17 Q9 22 13 17" stroke="#5980a6" stroke-width="0.9" fill="none"/>
+        <!-- right pan -->
+        <path d="M25 17 Q29 22 33 17" stroke="#5980a6" stroke-width="0.9" fill="none"/>
+        <!-- top finial -->
+        <circle cx="19" cy="5.5" r="1.5" fill="#5980a6"/>
+      </svg>
+    </div>
     <div class="nav-brand" style="display: flex; flex-direction: column; line-height: 1.15; text-align: center;">
       <span style="font-size: 43px; letter-spacing: 0.1em;">ANDREW BUBIS</span>
       <span style="font-family: var(--font-body); font-weight: 400; font-size: 15px; letter-spacing: 0.36em; text-transform: uppercase; color: var(--color-accent-700);">Attorney at Law</span>
@@ -159,19 +178,16 @@ html { scroll-behavior: smooth; }
   </section>
 
   <section id="attorney" style="background: var(--color-accent-900); color: var(--color-bg);">
-    <div style="max-width: 1060px; margin: 0 auto; box-sizing: border-box; padding: 68px 27px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 54px; align-items: start;">
-      <h2 style="font-size: 34px; margin: 0;">About Me</h2>
-      <div>
-        <p style="font-size: 16.5px; margin: 0 0 20px; text-wrap: pretty; color: color-mix(in srgb, var(--color-bg) 92%, transparent);">Andrew Bubis is a graduate of the Nashville School of Law and was admitted to the Tennessee bar in 2021. His practice is concentrated in contract, estate planning, and trust matters, and every engagement is handled personally — no hand-offs, no case managers.</p>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px 27px; border-top: 1px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-top: 20px;">
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 60%, transparent); margin-bottom: 4px;">Education</div>
-            <div style="font-size: 14.5px;">Nashville School of Law</div>
-          </div>
-          <div>
-            <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 60%, transparent); margin-bottom: 4px;">Admission</div>
-            <div style="font-size: 14.5px;">Tennessee, 2021</div>
-          </div>
+    <div style="max-width: 760px; margin: 0 auto; box-sizing: border-box; padding: 68px 27px; text-align: center;">
+      <p style="font-size: 16.5px; margin: 0 0 28px; text-wrap: pretty; color: color-mix(in srgb, var(--color-bg) 92%, transparent);">Andrew Bubis is a graduate of the Nashville School of Law and was admitted to the Tennessee bar in 2021. His practice is concentrated in contract, estate planning, and trust matters, and every engagement is handled personally — no hand-offs, no case managers.</p>
+      <div style="display: inline-flex; gap: 48px; border-top: 1px solid color-mix(in srgb, var(--color-bg) 25%, transparent); padding-top: 20px;">
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 60%, transparent); margin-bottom: 4px;">Education</div>
+          <div style="font-size: 14.5px;">Nashville School of Law</div>
+        </div>
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: color-mix(in srgb, var(--color-bg) 60%, transparent); margin-bottom: 4px;">Admission</div>
+          <div style="font-size: 14.5px;">Tennessee, 2021</div>
         </div>
       </div>
     </div>
@@ -195,8 +211,8 @@ html { scroll-behavior: smooth; }
           <div class="field"><label for="cf-email">Email</label><input class="input" id="cf-email" name="email" type="email" required autocomplete="email"></div>
         </div>
         <div class="field"><label for="cf-question">Your question</label><textarea class="input" id="cf-question" name="question" rows="5" required></textarea></div>
-        <div id="sent-note" hidden style="font-size: 14px; color: var(--color-accent-800);">Your email application should have opened with your message addressed to Andrew@bubislaw.com. If it did not, please email or call directly.</div>
-        <button class="btn btn-primary" type="submit" style="align-self: flex-start; padding: 10px 22px; font-size: 15px;">Send Question</button>
+        <div id="sent-note" hidden style="font-size: 14px; color: var(--color-accent-800);"></div>
+        <button class="btn btn-primary" id="cf-submit" type="submit" style="align-self: flex-start; padding: 10px 22px; font-size: 15px;">Send Question</button>
         <p style="font-size: 12px; color: var(--color-neutral-600); margin: 0; text-wrap: pretty;">Submitting this form does not create an attorney-client relationship. Please do not include confidential or time-sensitive information; an attorney-client relationship is formed only by a written engagement agreement.</p>
       </form>
     </div>
@@ -206,21 +222,46 @@ html { scroll-behavior: smooth; }
     <div style="max-width: 1060px; margin: 0 auto; box-sizing: border-box; padding: 34px 27px; display: flex; flex-direction: column; gap: 14px;">
       <div style="display: flex; justify-content: space-between; gap: 27px; flex-wrap: wrap; font-size: 13px; color: var(--color-neutral-700);">
         <div>&copy; 2026 Bubis Law. Andrew Bubis, Attorney at Law. Tennessee.</div>
-        <div><a href="mailto:Andrew@bubislaw.com">Andrew@bubislaw.com</a> &nbsp;&middot;&nbsp; <a href="tel:+16159733937">(615) 973-3937</a></div>
+        <div style="font-size: 11px; color: var(--color-neutral-500);"><a href="mailto:Andrew@bubislaw.com" style="color: var(--color-neutral-500);">Andrew@bubislaw.com</a> &nbsp;&middot;&nbsp; <a href="tel:+16159733937" style="color: var(--color-neutral-500);">(615) 973-3937</a></div>
       </div>
       <p style="font-size: 11.5px; color: var(--color-neutral-600); margin: 0; max-width: 100ch; text-wrap: pretty;">Bubis Law is a sole proprietorship and is not a separate legal entity. Attorney advertising. Prior results do not guarantee a similar outcome. Andrew Bubis is licensed to practice law in the State of Tennessee. The information on this website is provided for general informational purposes only and does not constitute legal advice. Viewing this website, or contacting this office by phone, email, or through this website, does not create an attorney-client relationship. Tennessee does not certify specialists in these areas of practice, and nothing on this site is a claim of certification as a specialist.</p>
     </div>
   </footer>
 </div>
 <script>
-document.getElementById('contact-form').addEventListener('submit', function (e) {
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  var f = e.target;
-  var name = f.name.value.trim(), email = f.email.value.trim(), q = f.question.value.trim();
-  var subject = encodeURIComponent('Website inquiry from ' + name);
-  var body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\nQuestion:\n' + q);
-  window.location.href = 'mailto:Andrew@bubislaw.com?subject=' + subject + '&body=' + body;
-  document.getElementById('sent-note').hidden = false;
+  var btn = document.getElementById('cf-submit');
+  var note = document.getElementById('sent-note');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  note.hidden = true;
+  try {
+    var res = await fetch('https://formspree.io/Andrew@bubislaw.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: e.target.name.value.trim(),
+        email: e.target.email.value.trim(),
+        question: e.target.question.value.trim()
+      })
+    });
+    if (res.ok) {
+      e.target.reset();
+      note.style.color = 'var(--color-accent-800)';
+      note.textContent = 'Message sent — you’ll hear back within one business day.';
+      note.hidden = false;
+      btn.textContent = 'Sent ✓';
+    } else {
+      throw new Error();
+    }
+  } catch(_) {
+    btn.disabled = false;
+    btn.textContent = 'Send Question';
+    note.style.color = '#b00';
+    note.textContent = 'Something went wrong. Please email Andrew@bubislaw.com directly.';
+    note.hidden = false;
+  }
 });
 </script>
 </body>
