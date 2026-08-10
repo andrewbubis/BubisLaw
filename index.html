@@ -221,37 +221,40 @@ html { scroll-behavior: smooth; }
   </footer>
 </div>
 <script>
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
+document.getElementById(‘contact-form’).addEventListener(‘submit’, async function(e) {
   e.preventDefault();
-  var btn = document.getElementById('cf-submit');
-  var note = document.getElementById('sent-note');
+  var btn = document.getElementById(‘cf-submit’);
+  var note = document.getElementById(‘sent-note’);
   btn.disabled = true;
-  btn.textContent = 'Sending…';
+  btn.textContent = ‘Sending…’;
   note.hidden = true;
   try {
-    var res = await fetch('https://formspree.io/Andrew@bubislaw.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    var res = await fetch(‘https://formsubmit.co/ajax/andrewbubis@gmail.com’, {
+      method: ‘POST’,
+      headers: { ‘Accept’: ‘application/json’, ‘Content-Type’: ‘application/json’ },
       body: JSON.stringify({
         name: e.target.name.value.trim(),
         email: e.target.email.value.trim(),
-        question: e.target.question.value.trim()
+        message: e.target.question.value.trim(),
+        _subject: ‘New message from bubislaw.com’,
+        _captcha: ‘false’
       })
     });
-    if (res.ok) {
+    var data = await res.json();
+    if (res.ok && data.success) {
       e.target.reset();
-      note.style.color = 'var(--color-accent-800)';
-      note.textContent = 'Message sent — you’ll hear back within one business day.';
+      note.style.color = ‘var(--color-accent-800)’;
+      note.textContent = ‘Message sent — you’ll hear back within one business day.’;
       note.hidden = false;
-      btn.textContent = 'Sent ✓';
+      btn.textContent = ‘Sent ✓’;
     } else {
       throw new Error();
     }
   } catch(_) {
     btn.disabled = false;
-    btn.textContent = 'Send Question';
-    note.style.color = '#b00';
-    note.textContent = 'Something went wrong. Please email Andrew@bubislaw.com directly.';
+    btn.textContent = ‘Send Question’;
+    note.style.color = ‘#b00’;
+    note.textContent = ‘Something went wrong — please try again in a moment.’;
     note.hidden = false;
   }
 });
