@@ -106,7 +106,7 @@ html { scroll-behavior: smooth; }
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
   <nav class="nav" style="max-width: 1200px; width: 100%; margin: 0 auto; box-sizing: border-box; padding: 24px 40px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;">
     <div>
-      <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Scales of Justice" style="opacity: 0.55;">
+      <svg width="52" height="52" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Scales of Justice" style="opacity: 0.55;">
         <!-- center post -->
         <rect x="18.5" y="6" width="1" height="26" fill="#5980a6"/>
         <!-- base -->
@@ -158,19 +158,16 @@ html { scroll-behavior: smooth; }
     <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 27px;">
       <div class="blueprint" style="padding: 27px 24px; display: flex; flex-direction: column; gap: 12px;">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700);">01</div>
         <h3 style="font-size: 22px; margin: 0;">Contracts</h3>
         <p style="font-size: 14.5px; color: var(--color-neutral-700); margin: 0; text-wrap: pretty;">Drafting, review, and negotiation of business and personal agreements, and enforcement of contract rights — including breach claims and pre-suit resolution.</p>
       </div>
       <div class="blueprint" style="padding: 27px 24px; display: flex; flex-direction: column; gap: 12px;">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700);">02</div>
         <h3 style="font-size: 22px; margin: 0;">Estate Planning</h3>
         <p style="font-size: 14.5px; color: var(--color-neutral-700); margin: 0; text-wrap: pretty;">Wills, powers of attorney, advance directives, and coordinated plans that carry out your wishes and provide for the people who depend on you.</p>
       </div>
       <div class="blueprint" style="padding: 27px 24px; display: flex; flex-direction: column; gap: 12px;">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        <div style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-700);">03</div>
         <h3 style="font-size: 22px; margin: 0;">Trusts</h3>
         <p style="font-size: 14.5px; color: var(--color-neutral-700); margin: 0; text-wrap: pretty;">Creation and funding of revocable and irrevocable trusts, trust administration, and counsel for trustees and beneficiaries under Tennessee law.</p>
       </div>
@@ -207,54 +204,60 @@ html { scroll-behavior: smooth; }
         <button class="btn btn-primary" id="cf-submit" type="submit" style="align-self: flex-start; padding: 10px 22px; font-size: 15px;">Send Question</button>
         <p style="font-size: 12px; color: var(--color-neutral-600); margin: 0; text-wrap: pretty;">Submitting this form does not create an attorney-client relationship. Please do not include confidential or time-sensitive information; an attorney-client relationship is formed only by a written engagement agreement.</p>
       </form>
+
+      <div style="margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--color-divider); display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; font-size: 15px;">
+        <a href="tel:+16159733937" style="text-decoration: none; color: var(--color-accent-700);">(615) 973-3937</a>
+        <span style="color: var(--color-neutral-400);">&middot;</span>
+        <a href="mailto:Andrew@bubislaw.com" style="text-decoration: none; color: var(--color-accent-700);">Andrew@bubislaw.com</a>
+        <span style="color: var(--color-neutral-400);">&middot;</span>
+        <span style="color: var(--color-neutral-700);">Nashville, TN</span>
+      </div>
     </div>
   </section>
 
   <footer style="border-top: 1px solid var(--color-divider); margin-top: auto;">
     <div style="max-width: 1060px; margin: 0 auto; box-sizing: border-box; padding: 34px 27px; display: flex; flex-direction: column; gap: 14px;">
-      <div style="display: flex; justify-content: space-between; gap: 27px; flex-wrap: wrap; font-size: 13px; color: var(--color-neutral-700);">
-        <div>&copy; 2026 Bubis Law. Andrew Bubis, Attorney at Law. Tennessee.</div>
-        <div style="font-size: 11px; color: var(--color-neutral-500);"><a href="mailto:Andrew@bubislaw.com" style="color: var(--color-neutral-500);">Andrew@bubislaw.com</a> &nbsp;&middot;&nbsp; <a href="tel:+16159733937" style="color: var(--color-neutral-500);">(615) 973-3937</a> &nbsp;&middot;&nbsp; 1404 Gale Ln, Nashville, TN</div>
-      </div>
+      <div style="font-size: 13px; color: var(--color-neutral-700);">&copy; 2026 Bubis Law. Andrew Bubis, Attorney at Law. Tennessee.</div>
       <p style="font-size: 11.5px; color: var(--color-neutral-600); margin: 0; max-width: 100ch; text-wrap: pretty;">Bubis Law is a sole proprietorship and is not a separate legal entity. Attorney advertising. Prior results do not guarantee a similar outcome. Andrew Bubis is licensed to practice law in the State of Tennessee. The information on this website is provided for general informational purposes only and does not constitute legal advice. Viewing this website, or contacting this office by phone, email, or through this website, does not create an attorney-client relationship. Tennessee does not certify specialists in these areas of practice, and nothing on this site is a claim of certification as a specialist.</p>
     </div>
   </footer>
 </div>
 <script>
-document.getElementById(‘contact-form’).addEventListener(‘submit’, async function(e) {
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  var btn = document.getElementById(‘cf-submit’);
-  var note = document.getElementById(‘sent-note’);
+  var btn = document.getElementById('cf-submit');
+  var note = document.getElementById('sent-note');
   btn.disabled = true;
-  btn.textContent = ‘Sending…’;
+  btn.textContent = 'Sending...';
   note.hidden = true;
   try {
-    var res = await fetch(‘https://formsubmit.co/ajax/andrew@bubislaw.com’, {
-      method: ‘POST’,
-      headers: { ‘Accept’: ‘application/json’, ‘Content-Type’: ‘application/json’ },
+    var res = await fetch('https://formsubmit.co/ajax/andrew@bubislaw.com', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: e.target.name.value.trim(),
         email: e.target.email.value.trim(),
         message: e.target.question.value.trim(),
-        _subject: ‘New message from bubislaw.com’,
-        _captcha: ‘false’
+        _subject: 'New message from bubislaw.com',
+        _captcha: 'false',
+        _template: 'table'
       })
     });
     var data = await res.json();
     if (res.ok && data.success) {
       e.target.reset();
-      note.style.color = ‘var(--color-accent-800)’;
-      note.textContent = ‘Message sent — you’ll hear back within one business day.’;
+      note.style.color = 'var(--color-accent-800)';
+      note.textContent = 'Message sent. You will hear back within one business day.';
       note.hidden = false;
-      btn.textContent = ‘Confirmed ✓’;
+      btn.textContent = 'Confirmed';
     } else {
-      throw new Error();
+      throw new Error('send failed');
     }
-  } catch(_) {
+  } catch (err) {
     btn.disabled = false;
-    btn.textContent = ‘Send Question’;
-    note.style.color = ‘#b00’;
-    note.textContent = ‘Something went wrong — please try again in a moment.’;
+    btn.textContent = 'Send Question';
+    note.style.color = '#b00';
+    note.textContent = 'Something went wrong. Please email Andrew@bubislaw.com directly.';
     note.hidden = false;
   }
 });
