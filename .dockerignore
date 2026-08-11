@@ -1,0 +1,10 @@
+.git
+.gitignore
+.dockerignore
+Dockerfile
+.railway
+deploy.sh
+Deploy.command
+.DS_Store
+*.log
+README.md

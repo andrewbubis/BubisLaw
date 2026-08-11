@@ -1,9 +1,8 @@
 FROM nginx:alpine
-COPY index.html /usr/share/nginx/html/index.html
-COPY styles.css /usr/share/nginx/html/styles.css
-COPY andrew-bubis.jpg /usr/share/nginx/html/andrew-bubis.jpg
-COPY robots.txt /usr/share/nginx/html/robots.txt
-COPY sitemap.xml /usr/share/nginx/html/sitemap.xml
-COPY favicon.svg /usr/share/nginx/html/favicon.svg
-COPY og-image.png /usr/share/nginx/html/og-image.png
+
+# Copy the whole site. .dockerignore excludes git/build/script files,
+# so any new asset (images, css, etc.) is picked up automatically —
+# no need to edit this file when adding files to the site.
+COPY . /usr/share/nginx/html/
+
 EXPOSE 80
