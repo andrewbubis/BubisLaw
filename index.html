@@ -145,7 +145,7 @@ html { scroll-behavior: smooth; }
         </div>
       </div>
       <figure style="margin: 0; aspect-ratio: 4 / 5; overflow: hidden;">
-        <img src="andrew-bubis.jpg" alt="Andrew Bubis, Attorney at Law" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
+        <img src="andrew-bubis-2026.jpg" alt="Andrew Bubis, Attorney at Law" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;">
       </figure>
     </div>
   </header>
@@ -193,6 +193,19 @@ html { scroll-behavior: smooth; }
   <section id="contact" style="max-width: 1060px; width: 100%; margin: 0 auto; box-sizing: border-box; padding: 76px 27px;">
     <h2 style="font-size: 34px; margin: 0 0 27px; text-align: center;">Contact</h2>
     <div style="max-width: 600px; margin: 0 auto;">
+      <div class="blueprint" id="contact-success" hidden style="padding: 44px 27px; text-align: center;">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="width: 62px; height: 62px; margin: 0 auto 20px; border-radius: 50%; background: var(--color-accent-700); display: flex; align-items: center; justify-content: center;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 16.5 L13.5 22 L24 11" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 style="font-size: 25px; margin: 0 0 10px;">Message Sent</h3>
+        <p style="font-size: 15.5px; color: var(--color-neutral-700); margin: 0 0 6px;">Thank you — your message has been received.</p>
+        <p style="font-size: 15.5px; color: var(--color-neutral-700); margin: 0;">Andrew will respond within one business day.</p>
+        <button type="button" id="cf-again" style="margin-top: 24px; background: none; border: none; font-size: 13.5px; color: var(--color-accent-700); cursor: pointer; text-decoration: underline; font-family: inherit;">Send another message</button>
+      </div>
+
       <form class="blueprint" id="contact-form" style="padding: 27px; display: flex; flex-direction: column; gap: 18px;">
         <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
@@ -223,44 +236,55 @@ html { scroll-behavior: smooth; }
   </footer>
 </div>
 <script>
-document.getElementById('contact-form').addEventListener('submit', async function(e) {
-  e.preventDefault();
+(function () {
+  var form = document.getElementById('contact-form');
+  var panel = document.getElementById('contact-success');
   var btn = document.getElementById('cf-submit');
   var note = document.getElementById('sent-note');
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  note.hidden = true;
-  try {
-    var res = await fetch('https://formsubmit.co/ajax/andrew@bubislaw.com', {
-      method: 'POST',
-      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: e.target.name.value.trim(),
-        email: e.target.email.value.trim(),
-        message: e.target.question.value.trim(),
-        _subject: 'New message from bubislaw.com',
-        _captcha: 'false',
-        _template: 'table'
-      })
-    });
-    var data = await res.json();
-    if (res.ok && data.success) {
-      e.target.reset();
-      note.style.color = 'var(--color-accent-800)';
-      note.textContent = 'Message sent. You will hear back within one business day.';
+  var again = document.getElementById('cf-again');
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    note.hidden = true;
+    try {
+      var res = await fetch('https://formsubmit.co/ajax/andrew@bubislaw.com', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          message: form.question.value.trim(),
+          _subject: 'New message from bubislaw.com',
+          _captcha: 'false',
+          _template: 'table'
+        })
+      });
+      var data = await res.json();
+      if (!res.ok || data.success !== 'true') throw new Error('send failed');
+
+      form.reset();
+      form.hidden = true;
+      panel.hidden = false;
+      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      btn.disabled = false;
+      btn.textContent = 'Send Question';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Send Question';
+      note.style.color = '#b00';
+      note.textContent = 'Something went wrong. Please email Andrew@bubislaw.com directly.';
       note.hidden = false;
-      btn.textContent = 'Confirmed';
-    } else {
-      throw new Error('send failed');
     }
-  } catch (err) {
-    btn.disabled = false;
-    btn.textContent = 'Send Question';
-    note.style.color = '#b00';
-    note.textContent = 'Something went wrong. Please email Andrew@bubislaw.com directly.';
-    note.hidden = false;
-  }
-});
+  });
+
+  again.addEventListener('click', function () {
+    panel.hidden = true;
+    form.hidden = false;
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
 </script>
 </body>
 </html>
